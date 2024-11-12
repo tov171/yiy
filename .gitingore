@@ -1,0 +1,12 @@
+# Ignore build artifacts
+*.o
+*.out
+*.a
+
+# Ignore generated files
+yiy
+
+# Ignore temporary files
+*.swp
+*~
+
