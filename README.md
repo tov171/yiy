@@ -64,7 +64,11 @@ Yiy uses a `Makefile` to handle the build process. Follow these steps to compile
 To download a video from YouTube, simply run the following command with the video URL:
 
 ```bash
-./yiy https://www.youtube.com/watch?v=yourvideoID
+yiy
+```
+```bash
+Enter the video URL: 
+https://www.youtube.com/watch?v=yourvideo
 ```
 
 ### Format Selection (Optional)
