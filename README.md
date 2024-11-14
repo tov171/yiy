@@ -1,95 +1,78 @@
 
 # Yiy - YouTube Video Downloader
 
-Yiy is a command-line tool that allows you to download high-quality videos from YouTube. It automatically selects the best video and audio quality and merges them into a single MP4 file for easy playback.
+Yiy is a versatile command-line tool to download high-quality videos or audio-only files from YouTube. With options for format selection and automatic merging, Yiy simplifies video downloads and media management.
 
 ## Features
-- **Download videos from YouTube**: Get the highest quality video available.
-- **Auto selection of best video and audio formats**: Automatically chooses the best format for both video and audio, saving you the hassle.
-- **Video and audio merging**: Combines the video and audio into a single MP4 file.
-- **Simple CLI interface**: Easy to use command-line interface to download videos in just a few commands.
+
+- **Video and Audio Download**: Download video, audio, or combined streams from YouTube.
+- **Enhanced Format Selection**: Choose specific video or audio formats manually, or let Yiy automatically select the highest quality.
+- **Automatic Merging**: Seamlessly merges video and audio into a single MP4 file.
+- **Command-Line Simplicity**: Easily download media with minimal commands.
 
 ## Installation
 
 ### Prerequisites
-Before using Yiy, you need to install the following dependencies:
-- **C++ compiler**: Make sure you have a C++ compiler installed (GCC or Clang).
-- **yt-dlp**: A YouTube video downloader that helps extract video data.
-- **ffmpeg**: A tool to merge video and audio files.
+Ensure you have:
+- **C++ Compiler** (e.g., GCC or Clang)
+- **yt-dlp** for YouTube data extraction
+- **ffmpeg** for video-audio merging
 
-#### Installing Dependencies
+#### Install Dependencies
 
-1. **Install yt-dlp**:
-   On Ubuntu/Debian-based systems:
-   ```bash
-   sudo apt install yt-dlp
-   ```
+```bash
+# Install yt-dlp and ffmpeg on Ubuntu/Debian
+sudo apt install yt-dlp ffmpeg
 
-   On macOS (with Homebrew):
-   ```bash
-   brew install yt-dlp
-   ```
+# On macOS with Homebrew
+brew install yt-dlp ffmpeg
+```
 
-2. **Install ffmpeg**:
-   On Ubuntu/Debian-based systems:
-   ```bash
-   sudo apt install ffmpeg
-   ```
+#### Clone Repository
 
-   On macOS (with Homebrew):
-   ```bash
-   brew install ffmpeg
-   ```
+```bash
+git clone https://github.com/tov171/yiy.git
+cd yiy
+```
 
-3. **Clone the repository**:
-   ```bash
-   git clone https://github.com/tov171/yiy.git
-   cd yiy
-   ```
+### Building
 
-### Building the Project
-Yiy uses a `Makefile` to handle the build process. Follow these steps to compile the project:
+Compile Yiy using the Makefile:
 
-1. **Build the project**:
-   ```bash
-   make
-   ```
-
-2. After building, you should have an executable file named `yiy`.
+```bash
+make
+```
 
 ## Usage
 
-### Downloading a Video
+### Basic Download Command
 
-To download a video from YouTube, simply run the following command with the video URL:
+Run `yiy` and follow the prompts to enter a YouTube URL and select a format.
 
 ```bash
-yiy
-```
-```bash
-Enter the video URL: 
+./yiy
+Enter the video URL:
 https://www.youtube.com/watch?v=yourvideo
 ```
 
-### Format Selection (Optional)
+### Format Selection
 
-After entering the video URL, the tool will display a list of available formats. You can select the format you want by entering its ID (for example, 22 for 720p MP4). If you don't select a format, the tool will automatically choose the best available format.
+After entering the URL, Yiy displays available formats (video and audio). Enter a format ID to download or press enter for auto-selection.
 
-### Merging Video and Audio
+### Example Commands
 
-Yiy automatically merges the video and audio streams into a single MP4 file, so you don’t have to worry about handling them separately.
+- **Download audio-only**: Select an audio format ID (e.g., `140` for m4a).
+- **Download video**: Choose a video format ID with or without audio.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file.
 
 ## Contributing
 
-Feel free to fork this project, open issues, and submit pull requests. Contributions are welcome!
+Contributions and issues are welcome!
 
----
+### Acknowledgments
 
-### **Acknowledgments**
-
-- This project uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) for extracting YouTube video information.
-- [ffmpeg](https://ffmpeg.org/) is used for merging video and audio files.
+- Built with [yt-dlp](https://github.com/yt-dlp/yt-dlp) for YouTube video data.
+- Uses [ffmpeg](https://ffmpeg.org/) for media merging.
