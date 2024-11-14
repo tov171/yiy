@@ -3,8 +3,8 @@
 
 #include <string>
 
-// Function to download video with default arguments in the declaration
-void downloadVideo(const std::string& video_url, const std::string& format = "mp4", const std::string& quality = "best");
+void showFormats(const std::string& video_url);
+void downloadVideo(const std::string& video_url, const std::string& format_id);
 
-#endif // YIY_H
+#endif
 

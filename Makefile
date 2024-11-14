@@ -1,27 +1,31 @@
 # Compiler settings
-CC = g++                # The compiler to use (g++ for C++)
-CFLAGS = -std=c++17 -Wall -O2  # Compilation flags (standard C++17, all warnings, optimization)
-LDFLAGS =                 # Linker flags (empty for now)
+CC = g++                          # The compiler to use (g++ for C++)
+CFLAGS = -std=c++17 -Wall -O2     # Compilation flags (standard C++17, all warnings, optimization)
+LDFLAGS =                         # Linker flags (empty for now)
 
 # Source files
-SRC = yiy.cpp            # List of source files (add more if needed)
+SRC = main.cpp yiy.cpp            # List of source files
 
 # Object files (derived from the source files)
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:.cpp=.o)              # Creates a list of .o files from .cpp files
 
 # Executable file
-EXEC = yiy                # The final executable will be named 'yiy'
+EXEC = yiy                        # The final executable will be named 'yiy'
 
 # Default rule (compile and link)
 all: $(EXEC)
 
-# Rule to compile .cpp files into .o files
+# Compile rule for object files
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@   # Compile each .cpp file to a .o file individually
+
+# Link all object files to create the final executable
 $(EXEC): $(OBJ)
-	$(CC) $(LDFLAGS) $(OBJ) -o $(EXEC)
+	$(CC) $(OBJ) -o $(EXEC)
 
 # Clean the build (remove object files and executable)
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(OBJ) $(EXEC)           # Remove all .o files and the executable
 
 # Install the executable globally
 install: $(EXEC)
