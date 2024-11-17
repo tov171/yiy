@@ -1,44 +1,26 @@
-# Compiler settings
-CC = g++                          # The compiler to use (g++ for C++)
-CFLAGS = -std=c++17 -Wall -O2     # Compilation flags (standard C++17, all warnings, optimization)
-LDFLAGS =                         # Linker flags (empty for now)
+# Compiler and flags
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -O2
 
-# Source files
-SRC = main.cpp yiy.cpp            # List of source files
+# Target executable
+TARGET = yiy
 
-# Object files (derived from the source files)
-OBJ = $(SRC:.cpp=.o)              # Creates a list of .o files from .cpp files
+# Source files and object files
+SRCS = main.cpp yiy.cpp
+OBJS = main.o yiy.o
 
-# Executable file
-EXEC = yiy                        # The final executable will be named 'yiy'
+# Default target
+all: $(TARGET)
 
-# Default rule (compile and link)
-all: $(EXEC)
+# Link object files to create the executable
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Compile rule for object files
+# Compile source files to object files
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@   # Compile each .cpp file to a .o file individually
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Link all object files to create the final executable
-$(EXEC): $(OBJ)
-	$(CC) $(OBJ) -o $(EXEC)
-
-# Clean the build (remove object files and executable)
+# Clean up build files
 clean:
-	rm -f $(OBJ) $(EXEC)           # Remove all .o files and the executable
-
-# Install the executable globally
-install: $(EXEC)
-	sudo mv $(EXEC) /usr/local/bin/
-	sudo chmod +x /usr/local/bin/$(EXEC)
-
-# Rebuild everything
-rebuild: clean all
-
-# Show help
-help:
-	@echo "Usage:"
-	@echo "  make        - Compile the project"
-	@echo "  make install - Install the executable globally"
-	@echo "  make clean   - Remove object files and executable"
+	rm -f $(OBJS) $(TARGET)
 
